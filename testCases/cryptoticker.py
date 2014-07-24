@@ -5,7 +5,7 @@ from subprocess import *
 from time import sleep, strftime
 from datetime import datetime
 import time
-from dogemethod import *
+from getDoge import *
 from btc import *
 
 lcd = Adafruit_CharLCD()
@@ -16,19 +16,19 @@ def updateVal(coins):
 	
 	if coins == 'doge':
 		try:
-			obj = str(getdoge().singledoge())
-		except Exception:
-			sys.exec_clear()
+			obj = str(getDoge().singleDoge())
+		except:
+			lcd.message("Error updating " + coins)
 	elif coins == 'mildoge':
 		try:
-			obj = (float(dogesingle)*1000000)
-		except Exception:
-			sys.exec_clear()
+			obj = float(getDoge().dogeMil())
+		except:
+			lcd.message("Error updating " + coins)
 	elif coins == 'btc':
 		try:
-			obj = str(getbtc().FifteenVal())
-		except Exception:
-			sys.exec_clear()
+			obj = str(getBTC().FifteenVal())
+		except:
+			lcd.message("Error updating" + coins)
 	return obj
 		
 
@@ -58,7 +58,6 @@ if __name__ == "__main__":
 			x += 1
 			
 			
-#For use on Pi comment out print statements and uncomment lcd. statements!
-#Every 10 seconds it will switch between 1 doge and 1million doge
-#Updates values every five minutes
+
 #used for testing. Adafruit_CharLCD has been edited to output to console	
+#uncomment lcd begins
