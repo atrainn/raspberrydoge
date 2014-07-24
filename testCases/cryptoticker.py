@@ -61,4 +61,4 @@ if __name__ == "__main__":
 #For use on Pi comment out print statements and uncomment lcd. statements!
 #Every 10 seconds it will switch between 1 doge and 1million doge
 #Updates values every five minutes
-	
+#used for testing. Adafruit_CharLCD has been edited to output to console	
