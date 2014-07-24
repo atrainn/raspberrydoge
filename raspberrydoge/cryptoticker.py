@@ -16,9 +16,18 @@ if __name__ == "__main__":
 		lcd.clear()
 		lcd.message(datetime.now().strftime('%b %d  %H:%M:%S\n'))
 		lcd.message("Updating...")
-		dogesingle = str(getdoge().singledoge())
-		mildoge = (float(dogesingle)*1000000)
-		btcval = str(getbtc().FifteenVal())
+		try:
+			dogesingle = str(getdoge().singledoge())
+		except Exception:
+			sys.exec_clear()
+		try:
+			mildoge = (float(dogesingle)*1000000)
+		except Exception:
+			sys.exec_clear()
+		try:
+			btcval = str(getbtc().FifteenVal())
+		except Exception:
+			sys.exec_clear()
 		x = 0
 		while x < 10:
 			lcd.clear()
