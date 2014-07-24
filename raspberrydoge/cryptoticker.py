@@ -11,10 +11,33 @@ from btc import *
 lcd = Adafruit_CharLCD()
 lcd.begin(16, 1)
 
-def updateValues(self):
-	dogesingle = str(getdoge().singledoge())
-	mildoge = (float(dogesingle)*1000000)
-	btcval = str(getbtc().FifteenVal())
+def updateValues(object, crypto):
+	
+	if crypto == 'doge':
+		try:
+			dogesingle = str(getdoge().singledoge())
+			obj = dogesingle
+		except Exception:
+			lcd.message(str(e))
+			sys.exec_clear()
+	
+	elif crypto == 'mildoge':
+		try:
+			mildoge = (float(dogesingle)*1000000)
+		except Exception:
+			lcd.message(str(e))
+			sys.exec_clear()
+		
+	elif crypto == 'btc':
+		try:
+			btcval = str(getbtc().FifteenVal())
+		except e:
+			lcd.message(str(e))
+			sys.exec_clear()
+	else:
+		lcd.message("Sorry, an error \nhas ocucrred")
+	
+	return obj
 	
 	
 if __name__ == "__main__":
@@ -22,10 +45,10 @@ if __name__ == "__main__":
 		lcd.clear()
 		lcd.message(datetime.now().strftime('%b %d  %H:%M:%S\n'))
 		lcd.message("Updating...")
-		try:
-			updateValues()
-		except Exception:
-			sys.exec_clear()
+		updateValues('doge')
+		updateValues('dogemil')
+		updateValues('btc')
+
 
 		x = 0
 		while x < 10:
