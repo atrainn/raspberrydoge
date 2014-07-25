@@ -2,7 +2,7 @@ import urllib2
 
 url = 'http://blockchain.info/ticker'
 
-class getbtc:
+class getBTC:
     def GetVal(self):
         feed = urllib2.urlopen(url)
         var1 = feed.read()
@@ -11,7 +11,7 @@ class getbtc:
 #Gets current  btc values for all currencies
     
     def UsdVal(self):
-        rawVal = str(getbtc().GetVal())
+        rawVal = str(getBTC().GetVal())
         removeJunk = rawVal.split('"USD" : {')
         allUSDVal = removeJunk[1].split(',  "symbol" : "$"},')
         return allUSDVal[0]
@@ -19,7 +19,7 @@ class getbtc:
 #pulls out only the usd value line
 
     def FifteenVal(self):
-        rawVal = str(getbtc().UsdVal())
+        rawVal = str(getBTC().UsdVal())
         removeJunk = rawVal.split('"15m" : ')
         fifteenminVal = removeJunk[1].split(",")
         return fifteenminVal[0]
@@ -27,7 +27,7 @@ class getbtc:
 #returns the 15 minute value of btc
 
 if __name__ == "__main__":
-    print str(getbtc().GetVal())
-    print str(getbtc().FifteenVal())
+    print str(getBTC().GetVal())
+    print str(getBTC().FifteenVal())
     
     
