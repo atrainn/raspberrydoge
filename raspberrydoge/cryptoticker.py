@@ -11,35 +11,57 @@ from btc import *
 lcd = Adafruit_CharLCD()
 lcd.begin(16, 1)
 
-def updateVal(coins):
-	obj = 0
-	
+def updateVal(coins, oldVal):
+
 	if coins == 'doge':
 		try:
-			obj = str(getDoge().singleDoge())
+			value = str(getDoge().singleDoge())
 		except:
-			lcd.message("Error updating " + coins)
+			lcd.clear()
+			lcd.message("Error updating\n" + coins)
+			time.sleep(2)
+			value = oldVal
 	elif coins == 'mildoge':
 		try:
-			obj = float(getDoge().dogeMil())
+			value = float(getDoge().dogeMil())
 		except:
-			lcd.message("Error updating " + coins)
+			lcd.clear()
+			lcd.message("Error updating\n" + coins)
+			time.sleep(2)
+			value = oldVal
 	elif coins == 'btc':
 		try:
-			obj = str(getBTC().FifteenVal())
+			value = str(getBTC().FifteenVal())
 		except:
-			lcd.message("Error updating" + coins)
-	return obj
-		
+			lcd.clear()
+			lcd.message("Error updating\n" + coins)
+			time.sleep(2)
+			value = oldVal
+			
+	return value
+	
+#Sets the new value to the old value if there's an issue updating
+	
 
 if __name__ == "__main__":
-	while 1:
+	#Define Backup Vals
+	dogesingle = 0
+	dogeOldVal = dogesingle
+	milDoge = 0
+	milDogeOld = milDoge
+	btcVal = 0
+	btcValOld = btcVal
+	#Define Backup Vals
+	
+	
+	
+	while True:
 		lcd.clear()
 		lcd.message(datetime.now().strftime('%b %d  %H:%M:%S\n'))
 		lcd.message("Updating...")
-		dogesingle = str(updateVal('doge'))
-		mildoge = str(updateVal('mildoge'))
-		btcval = str(updateVal('btc'))
+		dogesingle = str(updateVal('doge', dogeOldVal))
+		milDoge = str(updateVal('mildoge', milDogeOld))
+		btcVal = str(updateVal('btc', btcValOld))
 
 		x = 0
 		while x < 10:
@@ -49,12 +71,15 @@ if __name__ == "__main__":
 			time.sleep(10)
 			lcd.clear()
 			lcd.message(datetime.now().strftime('%b %d  %H:%M:%S\n'))
-			lcd.message("1MD: $" + str(mildoge))
+			lcd.message("1MD: $" + str(milDoge))
 			time.sleep(10)
 			lcd.clear()
 			lcd.message(datetime.now().strftime('%b %d  %H:%M:%S\n'))
-			lcd.message("BTC: $" + btcval)
+			lcd.message("BTC: $" + btcVal)
 			time.sleep(10)
 			x += 1
 			
 			
+
+#used for testing. Adafruit_CharLCD has been edited to output to console	
+#uncomment lcd begins
