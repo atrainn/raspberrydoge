@@ -7,53 +7,11 @@ from datetime import datetime
 import time
 from getDoge import *
 from btc import *
+from updateValues import *
 
 lcd = Adafruit_CharLCD()
 #lcd.begin(16, 1)
 
-def updateVal(coins, oldVal):
-
-	if coins == 'doge':
-		try:
-			value = str(getDoge().singleDoge())
-		except:
-			try:
-				value = str(getDoge2().singleDoge())
-			except:
-				lcd.clear()
-				lcd.message("Could Not Update\n" + coins)
-			time.sleep(2)
-			if value == '0':
-				value = oldVal
-				
-				
-	elif coins == 'mildoge':
-		try:
-			value = float(getDoge().dogeMil())
-		except:
-			try:
-				value = str(getDoge2().dogeMil())
-			except:
-				lcd.clear()
-				lcd.message("Could Not Update\n" + coins)
-			time.sleep(2)
-			if value == '0':
-				value = oldVal
-				
-				
-	elif coins == 'btc':
-		try:
-			value = str(getBTC().FifteenVal())
-		except:
-			lcd.clear()
-			lcd.message("Error updating\n" + coins)
-			time.sleep(2)
-			value = oldVal
-			
-	return value
-	
-#Sets the new value to the old value if there's an issue updating
-	
 
 if __name__ == "__main__":
 	#Define Backup Vals
@@ -71,9 +29,9 @@ if __name__ == "__main__":
 		lcd.clear()
 		lcd.message(datetime.now().strftime('%b %d  %H:%M:%S\n'))
 		lcd.message("Updating...")
-		dogesingle = str(updateVal('doge', dogeOldVal))
-		milDoge = str(updateVal('mildoge', milDogeOld))
-		btcVal = str(updateVal('btc', btcValOld))
+		dogesingle = str(updateValues().updateVal('doge', dogeOldVal))
+		milDoge = str(updateValues().updateVal('mildoge', milDogeOld))
+		btcVal = str(updateValues().updateVal('btc', btcValOld))
 
 		x = 0
 		while x < 10:
@@ -92,6 +50,3 @@ if __name__ == "__main__":
 			x += 1
 			
 			
-
-#used for testing. Adafruit_CharLCD has been edited to output to console	
-#uncomment lcd begins

@@ -1,9 +1,10 @@
 from getDoge import *
 from Adafruit_CharLCD import Adafruit_CharLCD
 from btc import *
+import time
 
 class updateValues:
-    def updateVal(coins, oldVal):
+    def updateVal(self, coins, oldVal):
     
     	if coins == 'doge':
     		try:
