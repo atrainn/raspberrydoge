@@ -39,6 +39,8 @@ def updateVal(coins, oldVal):
 			time.sleep(2)
 			if value == '0':
 				value = oldVal
+				
+				
 	elif coins == 'btc':
 		try:
 			value = str(getBTC().FifteenVal())
