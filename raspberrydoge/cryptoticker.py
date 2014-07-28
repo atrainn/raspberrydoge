@@ -17,18 +17,30 @@ def updateVal(coins, oldVal):
 		try:
 			value = str(getDoge().singleDoge())
 		except:
-			lcd.clear()
-			lcd.message("Error updating\n" + coins)
+			try:
+				value = str(getDoge2().singleDoge())
+			except:
+				lcd.clear()
+				lcd.message("Could Not Update\n" + coins)
 			time.sleep(2)
-			value = oldVal
+			if value == '0':
+				value = oldVal
+				
+				
 	elif coins == 'mildoge':
 		try:
 			value = float(getDoge().dogeMil())
 		except:
-			lcd.clear()
-			lcd.message("Error updating\n" + coins)
+			try:
+				value = str(getDoge2().dogeMil())
+			except:
+				lcd.clear()
+				lcd.message("Could Not Update\n" + coins)
 			time.sleep(2)
-			value = oldVal
+			if value == '0':
+				value = oldVal
+				
+				
 	elif coins == 'btc':
 		try:
 			value = str(getBTC().FifteenVal())
@@ -80,6 +92,3 @@ if __name__ == "__main__":
 			x += 1
 			
 			
-
-#used for testing. Adafruit_CharLCD has been edited to output to console	
-#uncomment lcd begins
