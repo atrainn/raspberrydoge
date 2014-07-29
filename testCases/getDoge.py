@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import urllib2
 
-url = 'https://www.dogeapi.com/wow/v2/?a=get_info'
+url = 'https://block.io/api/v1/get_current_price/?api_key=8467-e6b6-f79b-e1ba&price_base=USD'
 url2 = 'http://pubapi.cryptsy.com/api.php?method=singlemarketdata&marketid=182'
 
 
@@ -16,8 +16,8 @@ class getDoge:
 
 	def singleDoge(self):
 		rawval = str(getDoge().getvalue())
-		removejunk = rawval.split('"doge_usd":')
-		singleval  = removejunk[1].split(",")
+		removejunk = rawval.split('"price": "')
+		singleval  = removejunk[1].split('"')
 		return singleval[0]
 
 #gets current doge value and strips out all but the single doge value

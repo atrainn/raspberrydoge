@@ -1,3 +1,8 @@
+7/29/2014:
+
+-Doge API shut down, added block.io
+-Added backup doge api. Secondary API is cyrptsy
+
 7/24/2014:
 
 -Added exception handling

@@ -15,7 +15,7 @@ class updateValues:
     			except:
     				lcd.clear()
     				lcd.message("Could Not Update\n" + coins)
-    			time.sleep(2)
+    			    time.sleep(2)
     			if value == '0':
     				value = oldVal
     				
@@ -29,7 +29,7 @@ class updateValues:
     			except:
     				lcd.clear()
     				lcd.message("Could Not Update\n" + coins)
-    			time.sleep(2)
+    			    time.sleep(2)
     			if value == '0':
     				value = oldVal
     				
